@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mensaje para Mamá</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #ffe6f0;
+      text-align: center;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    h1 {
+      color: #cc0066;
+    }
+    p {
+      font-size: 1.5em;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>¡Feliz Día de las Madres!</h1>
+    <p id="frase"></p>
+  </div>
+
+  <script>
+    const frases = [
+      "Tu amor es el mejor lenguaje que conozco.",
+      "Gracias por compilar mi vida con tanto amor.",
+      "Mamá: el mejor sistema operativo de mi existencia.",
+      "Eres la única constante en mi código.",
+      "En el disco duro de mi corazón, tú tienes todos los permisos.",
+      "Tu ternura tiene mejor señal que cualquier red Wi-Fi.",
+      "Siempre haces Ctrl+Z cuando cometo errores.",
+      "Gracias por enseñarme con paciencia y amor… como una buena app educativa.",
+      "Tu amor es mi mejor firewall contra el mundo.",
+      "No hay algoritmo más perfecto que tu cariño."
+    ];
+
+    document.getElementById("frase").innerText = frases[Math.floor(Math.random() * frases.length)];
+  </script>
+</body>
+</html>
