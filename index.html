@@ -1,10 +1,11 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mensaje para Mamá</title>
+  <title>Feliz Dia Mamá</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -16,6 +17,11 @@
       text-align: center;
       padding: 20px;
     }
+    .heart {
+      font-size: 7rem;
+      animation: heartbeat 1.5s infinite;
+      color: #ff1744;
+    }
     .container {
       background: white;
       padding: 30px;
@@ -23,18 +29,59 @@
       box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
     h1 {
-      color: #cc0066;
+      font-size: 3.5em;
+      color: #d81b60;
+      margin-bottom: 10px;
+      animation: fadeInDown 2s ease-in-out;
     }
-    p {
-      font-size: 1.5em;
-      color: #333;
+      @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.4); }
+    
     }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+     .message {
+      margin-top: 20px;
+      font-size: 1.4em;
+      color: #6a1b9a;
+      min-height: 120px;
+      padding: 10px;
+      animation: fadeInUp 1s ease-in-out;
+    }
+    .flower {
+      position: absolute;
+      top: -50px;
+      color: rgb(223, 78, 78);
+      font-size: 2rem;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
   </style>
 </head>
 <body>
   <div class="container">
     <h1>¡Feliz Día de las Madres!</h1>
-    <p id="frase"></p>
+    <div class="heart">💖</div>
+        <p id="frase"></p>
   </div>
 
   <script>
@@ -52,6 +99,37 @@
     ];
 
     document.getElementById("frase").innerText = frases[Math.floor(Math.random() * frases.length)];
-  </script>
+     
+    let fraseActual = 0;
+
+    function mostrarFrase() {
+      const mensaje = document.getElementById('mensaje');
+      mensaje.innerHTML = "";
+      escribir(frases[fraseActual], mensaje);
+      fraseActual = (fraseActual + 1) % frases.length;
+    }
+
+    function escribir(texto, elemento, i = 0) {
+      if (i < texto.length) {
+        elemento.innerHTML += texto.charAt(i);
+        setTimeout(() => escribir(texto, elemento, i + 1), 40);
+      }
+    }
+
+    function lanzarFlores() {
+      const flor = document.createElement("div");
+      flor.classList.add("flower");
+      flor.style.left = Math.random() * 100 + "vw";
+      flor.style.animationDuration = (2 + Math.random() * 3) + "s";
+      flor.innerText = "🌸";
+      document.body.appendChild(flor);
+
+      setTimeout(() => {
+        flor.remove();
+      }, 5000);
+    }
+    setInterval(lanzarFlores, 300); 
+ </script>
+
 </body>
 </html>
